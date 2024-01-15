@@ -2,7 +2,7 @@
 
 ChromaKit adds convenience API for `SwiftUI.Color`, `UIKit.UIColor` and `AppKit.NSColor` that lets you easily create colours in the Lch, Lab, Oklch, and Oklab colour spaces.
 
-The colour transformations are based on [CSS Color Module Level 4]([url](https://www.w3.org/TR/css-color-4/)https://www.w3.org/TR/css-color-4/) sample code, and so should closely match what you see in most browsers.
+The colour transformations are based on [CSS Color Module Level 4](https://www.w3.org/TR/css-color-4/) sample code, and so should closely match what you see in most browsers.
 
 ## Usage
 
