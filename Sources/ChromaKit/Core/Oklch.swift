@@ -1,17 +1,17 @@
 import Foundation
 
 /// An LCH value in the Oklch color space
-struct Oklch {
-	
+public struct Oklch {
+
 	// MARK: Properties
 	
-	var l: Double
-	var c: Double
-	var h: Double
-	
+	public var l: Double
+	public var c: Double
+	public var h: Double
+
 	// MARK: Conversions
-	
-	func oklab() -> Oklab {
+	@inlinable
+	public func oklab() -> Oklab {
 		Oklab(
 			l: l,
 			a: cos(h * .pi / 180) * c,
@@ -20,12 +20,13 @@ struct Oklch {
 	}
 	
 	// MARK: Sugar
-	
-	func xyz() -> XYZ {
+	@inlinable
+	public func xyz() -> XYZ {
 		oklab().xyz()
 	}
-	
-	func p3() -> P3 {
+
+	@inlinable
+	public func p3() -> P3 {
 		oklab().xyz().p3()
 	}
 }

@@ -1,17 +1,25 @@
 import Foundation
 
 /// An XYZ value in the XYZ color space
-struct XYZ {
-	
+public struct XYZ {
+	@inlinable
+	public init(x: Double, y: Double, z: Double) {
+		self.x = x
+		self.y = y
+		self.z = z
+	}
+
+
 	// MARK: Properties
 	
-	var x: Double
-	var y: Double
-	var z: Double
-	
+	public var x: Double
+	public var y: Double
+	public var z: Double
+
 	// MARK: Conversions
-	
-	func p3() -> P3 {
+
+	@inlinable
+	public func p3() -> P3 {
 		let xyzToLinearP3 = ColorMatrix(
 			x: (446124/178915, -333277/357830,   -72051/178915),
 			y: (-14852/17905,    63121/35810,       423/17905),
