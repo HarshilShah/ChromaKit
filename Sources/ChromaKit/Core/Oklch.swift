@@ -2,6 +2,13 @@ import Foundation
 
 /// An LCH value in the Oklch color space
 public struct Oklch {
+	@inlinable
+	public init(l: Double, c: Double, h: Double) {
+		self.l = l
+		self.c = c
+		self.h = h
+	}
+	
 
 	// MARK: Properties
 	
