@@ -4,16 +4,20 @@ import Foundation
 public struct Lab {
 	@inlinable
 	public init(l: Double, a: Double, b: Double) {
-		self.l = l
-		self.a = a
-		self.b = b
+		self.components = ColorComponents(l, a, b)
+	}
+
+	@inlinable
+	public init(_ components: ColorComponents) {
+		self.components = components
 	}
 
 	// MARK: Properties
-	
-	public var l: Double
-	public var a: Double
-	public var b: Double
+	public var components: ColorComponents
+
+	@inlinable public var l: Double { components.x }
+	@inlinable public var a: Double { components.y }
+	@inlinable public var b: Double { components.z }
 
 	// MARK: Conversions
 	@inlinable

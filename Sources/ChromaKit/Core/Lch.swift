@@ -4,17 +4,20 @@ import Foundation
 public struct Lch {
 	@inlinable
 	public init(l: Double, c: Double, h: Double) {
-		self.l = l
-		self.c = c
-		self.h = h
+		self.components = ColorComponents(l, c, h)
 	}
-	
+
+	@inlinable
+	public init(_ components: ColorComponents) {
+		self.components = components
+	}
 
 	// MARK: Properties
-	
-	public var l: Double
-	public var c: Double
-	public var h: Double
+	public var components: ColorComponents
+
+	@inlinable public var l: Double { components.x }
+	@inlinable public var c: Double { components.y }
+	@inlinable public var h: Double { components.z }
 
 	// MARK: Conversions
 	@inlinable

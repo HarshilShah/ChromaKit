@@ -2,21 +2,24 @@ import Foundation
 
 /// An RGB value in the display P3 color space
 public struct P3 {
+	@inlinable
 	public init(r: Double, g: Double, b: Double) {
-		self.r = r
-		self.g = g
-		self.b = b
+		self.components = ColorComponents(r, g, b)
 	}
-	
+
+	@inlinable
+	public init(_ components: ColorComponents) {
+		self.components = components
+	}
 
 	// MARK: Properties
-	
-	public var r: Double
-	public var g: Double
-	public var b: Double
+	public var components: ColorComponents
+
+	@inlinable public var r: Double { components.x }
+	@inlinable public var g: Double { components.y }
+	@inlinable public var b: Double { components.z }
 
 	// MARK: Methods
-
 	@inlinable
 	public func gammaCorrected() -> P3 {
 		P3(r: gammaCorrected(r), g: gammaCorrected(g), b: gammaCorrected(b))
