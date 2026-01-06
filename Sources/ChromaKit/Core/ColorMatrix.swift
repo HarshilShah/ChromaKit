@@ -1,21 +1,21 @@
-import Foundation
+import simd
 
-/// A 3-element tuple used to represent a set of color components, such as `rgb`,` lab`, `lch`, and so on.
-typealias ColorComponents = (Double, Double, Double)
+/// A 3-element struct used to represent a set of color components, such as `rgb`,` lab`, `lch`, and so on.
+public typealias ColorComponents = SIMD3<Double>
 
 /// A 3x3 matrix used to perform color transformations
-struct ColorMatrix {
-	var x: ColorComponents
-	var y: ColorComponents
-	var z: ColorComponents
+public typealias ColorMatrix = matrix_double3x3
+
+extension ColorMatrix {
+	@inlinable
+	public init(x: ColorComponents, y: ColorComponents, z: ColorComponents) {
+		self.init(rows: [x, y, z])
+	}
 }
 
 extension ColorMatrix {
-	func dotProduct(_ components: ColorComponents) -> ColorComponents {
-		return (
-			components.0 * x.0 + components.1 * x.1 + components.2 * x.2,
-			components.0 * y.0 + components.1 * y.1 + components.2 * y.2,
-			components.0 * z.0 + components.1 * z.1 + components.2 * z.2
-		)
+	@inlinable
+	public func dotProduct(_ components: ColorComponents) -> ColorComponents {
+		self * components
 	}
 }

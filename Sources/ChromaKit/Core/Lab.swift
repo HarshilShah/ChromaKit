@@ -1,17 +1,27 @@
 import Foundation
 
 /// A Lab value in the CIELab color space
-struct Lab {
-	
+public struct Lab {
+	@inlinable
+	public init(l: Double, a: Double, b: Double) {
+		self.components = ColorComponents(l, a, b)
+	}
+
+	@inlinable
+	public init(_ components: ColorComponents) {
+		self.components = components
+	}
+
 	// MARK: Properties
-	
-	var l: Double
-	var a: Double
-	var b: Double
-	
+	public var components: ColorComponents
+
+	@inlinable public var l: Double { components.x }
+	@inlinable public var a: Double { components.y }
+	@inlinable public var b: Double { components.z }
+
 	// MARK: Conversions
-	
-	func xyz() -> XYZ {
+	@inlinable
+	public func xyz() -> XYZ {
 		let k = 24389.0/27.0
 		let e = 216.0/24389.0
 		
@@ -37,8 +47,8 @@ struct Lab {
 	}
 	
 	// MARK: Sugar
-	
-	func p3() -> P3 {
+	@inlinable
+	public func p3() -> P3 {
 		xyz().p3()
 	}
 }
